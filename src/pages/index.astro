@@ -1,24 +1,35 @@
 ---
-// Component Imports
-import Button from '../components/Button.astro';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import EmptyLayout from '../layouts/empty.astro'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
-
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
-		</div>
-	</body>
-</html>
+<EmptyLayout seo={{ title: 'Home', description: 'pppppppp' }}>
+  <div class="ds-hero min-h-screen font-serif">
+    <div
+      class="absolute flex gap-3 top-4 right-0 px-4 text-xl
+            *:size-8 *:text-center *:leading-8 *:rounded
+            hover:*:bg-primary
+            hover:*:text-white"
+    >
+    </div>
+    <div
+      transition:name="bg"
+      class="ds-hero-content bg-white/50 ds-card py-8 text-center flex-col text-primary-content"
+    >
+      <h1
+        transition:name="title"
+        class="text-7xl font-extrabold stroke-transparent bg-gradient-primary bg-clip-text text-transparent"
+      >
+        LimeLimeLime
+      </h1>
+      <div class="max-w-md">
+        <p class="py-6 text-balance">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae maiores voluptatum atque illum placeat
+          totam alias, excepturi culpa, eum, quae doloremque ducimus consequatur inventore recusandae enim impedit nemo
+          ipsam blanditiis?
+        </p>
+        <a class="ds-btn ds-btn-primary" href="/noproblem">noproblem page</a>
+        <a class="ds-btn ds-btn-ghost" href="/about">About me</a>
+      </div>
+    </div>
+  </div>
+</EmptyLayout>

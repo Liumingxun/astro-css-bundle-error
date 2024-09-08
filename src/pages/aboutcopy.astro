@@ -1,0 +1,21 @@
+---
+import DefaultLayout from "../layouts/default.astro";
+import HoverList from "../components/HoverList.astro";
+
+const hobbyList: Record<string, string[]> = {
+  game: ["Minecraft", "platformer", "sandbox", "..."],
+  music: ["classical", "vocaloid", "acg (*/ω\\*)", "..."],
+  anime: ["..."],
+};
+---
+
+<DefaultLayout>
+  copy pages
+  <article class="ds-prose">
+    {
+      Object.keys(hobbyList).map((hobby) => (
+        <HoverList hover={hobby} list={hobbyList[hobby]} />
+      ))
+    }
+  </article>
+</DefaultLayout>

@@ -1,0 +1,40 @@
+---
+const NAV_ITEMS = [
+  {
+    path: '/projects',
+    title: 'projects',
+  },
+  {
+    path: '/about',
+    title: 'about',
+  },
+  {
+    path: '/aboutcopy',
+    title: 'aboutcopy',
+  },
+  {
+    path: '/noproblem',
+    title: 'noproblem',
+  },
+]
+---
+
+<nav>
+  <ul class="font-serif inline-flex list-none gap-8 text-xl font-semibold text-primary py-2 flex-wrap mb-8">
+    {
+      NAV_ITEMS.map((item) => (
+        <li>
+          <a
+            class:list={[
+              `pb-1 border-b-2 hover:border-gray-400`,
+              Astro.url.pathname.startsWith(item.path) ? 'border-primary' : '',
+            ]}
+            href={item.path}
+          >
+            {item.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
