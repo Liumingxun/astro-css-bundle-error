@@ -1,19 +1,23 @@
-# Astro with Tailwind
+## to reproduce it
 
-```sh
-npm create astro@latest -- --template with-tailwindcss
-```
+1. run `build` script
+  You can see `about.html`, `aboutcopy.html`, and so on in `dist`
+2. run `preview` script
+  The css font will be wrong except `noproblem.html`
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/with-tailwindcss/devcontainer.json)
+In the dev mode this situation will not show. This bug may apply all the at-rules in theory.
 
-Astro comes with [Tailwind](https://tailwindcss.com) support out of the box. This example showcases how to style your Astro project with Tailwind.
 
-For complete setup instructions, please see our [Tailwind Integration Guide](https://docs.astro.build/en/guides/integrations-guide/tailwind).
+## I found the accidental case
 
-The solution:
+1. all pages in `pages` use `HoverList.astro` compontent (that have `style` tag)
 
-1. pages都使用会被提升
-2. 提升basehead中的global.css
-3. 删除style标签
+  the bundled css will be hoisted, the hoisted css order is normal, you can try delete the `noproblem.astro` and `index.astro` then run `build` script
+
+2. move `import` statement from `BaseHead.astro`
+
+  if the `import '../../styles/global.css'` move to `default.astro`, the bundle order is normal.
+
+3. remove `style` tag within `HoverList.astro`
+
+  yes, there is no bundle order problem.
