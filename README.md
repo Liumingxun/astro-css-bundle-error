@@ -11,3 +11,9 @@ npm create astro@latest -- --template with-tailwindcss
 Astro comes with [Tailwind](https://tailwindcss.com) support out of the box. This example showcases how to style your Astro project with Tailwind.
 
 For complete setup instructions, please see our [Tailwind Integration Guide](https://docs.astro.build/en/guides/integrations-guide/tailwind).
+
+The solution:
+
+1. pages都使用会被提升
+2. 提升basehead中的global.css
+3. 删除style标签
